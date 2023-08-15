@@ -13,7 +13,7 @@ saldo = 0
 limite = 500
 extrato = ""
 numero_saques = 0
-LIMITE_SAQUES = 3
+LIMITES_SAQUES = 3
 
 while True:
     opcao = input(menu).upper()
@@ -25,7 +25,9 @@ while True:
             extrato += f"Depósito no valor de R$ {valor:.2f} no dia {data_atual}\n"
     
     elif opcao == 'S':
-        valor_sacado = float(input(f"Por favor informe o quanto quer sacar: "))
+        valor_sacado = float(input("Por favor informe o quanto quer sacar: "))
+        numero_saques += 1
+        sacar(valor=valor_sacado, saldo=(saldo - valor_sacado))
 
         if valor_sacado > limite:
             print("O limite para saque é de R$ 500,00!")
@@ -50,3 +52,6 @@ while True:
 
     else:
         print("Opção inválida, favor informar uma das citadas anteriormente!")
+
+def sacar(saldo, valor, extrato, limite, numero_saques, limite_saques):
+    valor = input(float("Quanto você deseja sacar? "))
